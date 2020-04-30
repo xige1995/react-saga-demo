@@ -11,12 +11,12 @@ class CommentListNew extends React.Component{
   }
   handleClick(){
     console.log('handleClick this state', this.state)
+
   }
 
-  // 静态方法添加1
+  // 静态方法1
   static staticMethod0(){
-    console.log('staticMethod0 this', this)
-    console.log('staticMethod0')
+    console.log('staticMethod0 this state 静态方法拿不到state 和 props', this.state, this.props)
   }
 
   render(){
@@ -31,12 +31,11 @@ class CommentListNew extends React.Component{
   }
 }
 
-// 静态方法添加2
-CommentListNew.staticMethod = function() {
-  console.log('staticMethod this', this)
-  console.log('staticMethod this state 静态方法拿不到state 和 props', this.state, this.props)
-  console.log('staticMethod')
+// 静态方法2 class外额外添加
+// 静态方法拿不到state 和 props
+CommentListNew.staticMethod1 = function() {
+  console.log('staticMethod1 this state 静态方法拿不到state 和 props', this.state, this.props)
 }
-CommentListNew.staticMethod()
+CommentListNew.staticMethod1()
 
 export default CommentListNew

@@ -3,15 +3,14 @@ import React from 'react'
 export default  class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-
     this.textInput = null;
-
     this.setTextInputRef = element => {
       this.textInput = element;
     };
 
     this.focusTextInput = () => {
       // 使用原生 DOM API 使 text 输入框获得焦点
+      console.log('focusTextInput')
       if (this.textInput) this.textInput.focus();
     };
   }

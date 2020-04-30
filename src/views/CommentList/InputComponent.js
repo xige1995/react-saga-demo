@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 /*const InputComponent = function(props) {
   return(
     <div>
@@ -26,9 +27,9 @@ class InputComponent extends React.Component{
     return(
       <div>
         <div>props: {this.props.text}</div>
-        子树：
+        原始组件本身非子树不会更新：
         <div style={{paddingLeft: '20px'}}>
-          <div onClick={() => this.handleClick()}>点击sunState加1</div>
+          <button onClick={() => this.handleClick()}>点击sunState加1</button>
           <div>sunState: { this.state.sunState}</div>
         </div>
       </div>

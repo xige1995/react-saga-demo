@@ -19,20 +19,19 @@ export const withSubscription = function(WrappedComponent, selectData) {
     }
 
     componentDidMount(){
-      // ...负责订阅相关的操作...
       DataSource.addChangeListener(this.handleChange);
       this.add()
     }
 
-    componentWillUnmount(){
+    componentWillMount(){
       DataSource.removeChangeListener(this.handleChange)
     }
 
+
     add(){
       setTimeout( () => {
-        console.log('add', this.state.data)
         let temp = this.state.data
-        temp.push({id: 3, label: 'new 4'})
+        temp.push({id: 3, label: '新添加的 评论4'})
         this.setState({
           data: temp
         })
@@ -53,10 +52,10 @@ export const withSubscription = function(WrappedComponent, selectData) {
     }
   }
   // 包装显示名称以便轻松调试
-  // WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`
 
   // 必须准确知道应该拷贝哪些方法
-  WithSubscription.staticMethod = WrappedComponent.staticMethod
+  // WithSubscription.staticMethod0 = WrappedComponent.staticMethod0
 
   // 使用 hoist-non-react-statics 自动拷贝所有非 React 静态方法
   hoistNonReactStatic(WithSubscription, WrappedComponent)
@@ -65,21 +64,39 @@ export const withSubscription = function(WrappedComponent, selectData) {
 
 
 export const logProps = function (WrappedComponent) {
- /* WrappedComponent.prototype.componentDidUpdate = function(prevProps) {
-    console.log('Current props: ', this.props);
-    console.log('Previous props: ', prevProps);
+/*  WrappedComponent.prototype.componentDidUpdate = function(prevProps) {
+    console.log('function 无效 Current props: ', this.props);
+    console.log('function 无效 Previous props: ', prevProps);
   };
   return WrappedComponent;*/
 
   // 使用组合
-  return class extends React.Component {
+  class LogProps extends React.Component {
     componentDidUpdate(prevProps) {
       console.log('Current props: ', this.props);
       console.log('Previous props: ', prevProps);
     }
     render() {
       // 将 input 组件包装在容器中，而不对其进行修改。Good!
-      return <WrappedComponent {...this.props} />;
+      // 将自定义的 prop 属性 “forwardedRef” 定义为 ref
+      console.log('Current props: ', this.props);
+      const {forwardedRef, ...rest} = this.props;
+      return <WrappedComponent ref={forwardedRef} {...rest} />;
+
+      // 获取的时包装组件
+      // return <WrappedComponent {...this.props} />;
     }
   }
+
+  function forwardRef( props, ref) {
+    console.log('React.forwardRef(( props, ref)', ref)
+    return <LogProps {...props} forwardedRef={ref}/>
+  }
+
+  // 在 DevTools 中为该组件提供一个更有用的显示名。
+  // 例如 “ForwardRef(logProps(MyComponent))”
+  const name = WrappedComponent.displayName || WrappedComponent.name;
+  forwardRef.displayName = `logProps(${name})`;
+  return React.forwardRef(forwardRef);
+
 }
