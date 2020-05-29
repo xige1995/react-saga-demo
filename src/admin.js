@@ -7,16 +7,16 @@ class Admin extends React.Component{
     console.log('this.props.children', this.props)
     return (
       <div className="app">
-        <div className="header">header</div>
-        <div className='content'>
-          <div className="menu">
-            <LeftMenu/>
-          </div>
-          <div className="right_content">
-            {this.props.children}
-          </div>
-        </div>
+      <div className="header">header</div>
+    <div className='content'>
+      <div className="menu">
+        <LeftMenu/>
       </div>
+      <div className="right_content">
+        {this.props.children}
+      </div>
+    </div>
+    </div>
     );
   }
 }

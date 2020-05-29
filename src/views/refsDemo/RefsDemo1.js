@@ -2,6 +2,7 @@ import React from 'react'
 import AutoFocusTextInput from './CustomTextInput'
 import CustomTextInput1 from './CustomTextInput1'
 import CustomTextInput2 from './CustomTextInput2'
+import AutoFocusTextInput3 from './AutoFocusTextInput3'
 
 import FancyButton from './FancyButton'
 
@@ -44,6 +45,8 @@ class RefsDemo1 extends React.Component{
 
         <p>通过ref 使input获取焦点</p>
         <AutoFocusTextInput/>
+        <p>在父组件通过ref 使input获取焦点,无法项其他props 属性一样传递</p>
+        <AutoFocusTextInput3/>
 
         <p>给function组件挂载ref, 或报错</p>
         {/*<MyFunctionComponent  ref={this.textInput}/>*/}
