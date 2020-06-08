@@ -12,8 +12,8 @@ class CustomTextInput extends React.Component{
     // 直接使用原生 API 使 text 输入框获得焦点
     // 注意：我们通过 "current" 来访问 DOM 节点
     console.log('focusTextInput props', this.props)
-    console.log('focusTextInput props', this.ref)
-    this.props.ref.current.focus();
+    // console.log('focusTextInput props', this.ref)
+    // this.props.ref.current.focus();
   }
   render() {
     // 告诉 React 我们想把 <input> ref 关联到
@@ -22,7 +22,7 @@ class CustomTextInput extends React.Component{
       <div>
         <input
           type="text"
-          ref={this.props.ref} />
+        />
         <input
           type="button"
           value="Focus the text input"

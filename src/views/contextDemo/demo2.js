@@ -39,8 +39,8 @@ class ThemedButton extends React.Component {
   render() {
     return (
       <div>
-        <button theme={this.context}>{this.context}</button>
-        <button theme={this.contextType1}>{this.contextType1}</button>
+        <p><button theme={this.context}>{this.context}</button></p>
+        <p> <button theme={this.contextType1}>{this.contextType1}222</button></p>
       </div>
       )
   }

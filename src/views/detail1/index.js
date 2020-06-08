@@ -3,6 +3,8 @@ import CommentList from '../CommentList'
 import RefsDemo1 from '../refsDemo/RefsDemo1'
 import ContextDemo from '../contextDemo'
 import RenderPropsDemo from '../renderPropsDemo'
+import Hook from '../hook'
+
 import './detail1.less'
 
 export default class Detail1 extends React.Component{
@@ -24,6 +26,8 @@ export default class Detail1 extends React.Component{
         <ContextDemo/>
         <hr/>
         <RenderPropsDemo/>
+        <hr/>
+        <Hook/>
       </div>
     )
   }
